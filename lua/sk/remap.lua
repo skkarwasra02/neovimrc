@@ -53,3 +53,6 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- nnoremap <Leader>b :ls<CR>:b<Space>
+vim.keymap.set("n", "<leader>b", ":ls<CR>:b<Space>")

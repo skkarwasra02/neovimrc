@@ -28,30 +28,41 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    -- Replace the language servers listed here
-    -- with the ones you want to install
-    -- ensure_installed = {'tsserver', 'rust_analyzer'},
-    ensure_installed = {
-        'tsserver',
-        'eslint',
-        'html',
-        'cssls'
-    },
-    handlers = {
-        function(server_name)
-            require('lspconfig')[server_name].setup({})
-        end,
-        ['tsserver'] = function()
-            lspconfig.ts_ls.setup({
-                capabilities = lsp_capabilities,
-                settings = {
-                    completions = {
-                        completeFunctionCalls = true
-                    }
-                }
-            })
-        end
-    }
+  -- Replace the language servers listed here
+  -- with the ones you want to install
+  -- ensure_installed = {'tsserver', 'rust_analyzer'},
+  ensure_installed = {
+    'ts_ls',
+    'eslint',
+    'html',
+    'cssls'
+  },
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+    ['ts_ls'] = function()
+      lspconfig.ts_ls.setup({
+        capabilities = lsp_capabilities,
+        settings = {
+          completions = {
+            completeFunctionCalls = true
+          }
+        }
+      })
+    end,
+    ['eslint'] = function()
+      lspconfig.eslint.setup({
+        capabilities = lsp_capabilities,
+        settings = {
+            codeActions = {
+                force = false
+            },
+            force = false
+        }
+      })
+    end
+  }
 })
 
 local cmp = require('cmp')

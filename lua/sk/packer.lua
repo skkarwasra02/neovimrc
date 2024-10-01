@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('theprimeagen/harpoon')
+    use('theprimeagen/vim-be-good')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
 
@@ -47,4 +48,6 @@ return require('packer').startup(function(use)
         priority = 1000,
         opts = {},
     })
+
+    use('MaxMEllon/vim-jsx-pretty')
 end)
