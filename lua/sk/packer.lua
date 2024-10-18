@@ -49,5 +49,6 @@ return require('packer').startup(function(use)
         opts = {},
     })
 
-    use('MaxMEllon/vim-jsx-pretty')
+    use('jose-elias-alvarez/null-ls.nvim')
+    use('MunifTanjim/prettier.nvim')
 end)
