@@ -61,6 +61,20 @@ require('mason-lspconfig').setup({
             force = false
         }
       })
+    end,
+    ['gopls'] = function()
+      lspconfig.gopls.setup({
+        capabilities = lsp_capabilities,
+        settings = {
+          gopls = {
+            gofumpt = true,
+            analyses = {
+              unusedparams = true   
+            },
+            staticcheck = true
+          },
+        }
+      })
     end
   }
 })
