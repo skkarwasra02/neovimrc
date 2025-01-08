@@ -51,4 +51,21 @@ return require('packer').startup(function(use)
 
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
+
+    use({
+        "folke/ts-comments.nvim",
+        opts = {},
+        config = function()
+            require('ts-comments').setup()
+        end
+    })
+
+    use({
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        config = function()
+            require("trouble").setup()
+        end
+    })
 end)
