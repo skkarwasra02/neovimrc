@@ -25,7 +25,16 @@ return require('packer').startup(function(use)
     use('theprimeagen/harpoon')
     use('theprimeagen/vim-be-good')
     use('mbbill/undotree')
-    use('tpope/vim-fugitive')
+    use({
+        "kdheepak/lazygit.nvim",
+        requires = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            require("telescope").load_extension("lazygit")
+        end,
+    })
 
     use({ 'VonHeikemen/lsp-zero.nvim', branch = 'v4.x' })
     use({ 'neovim/nvim-lspconfig' })
