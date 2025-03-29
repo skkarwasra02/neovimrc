@@ -51,18 +51,19 @@ require('mason-lspconfig').setup({
                 }
             })
         end,
-        ['eslint'] = function()
-            lspconfig.eslint.setup({
-                capabilities = lsp_capabilities,
-                settings = {
-                    codeActions = {
-                        force = false
-                    },
-                    force = false,
-                    format = false
-                }
-            })
-        end,
+        -- ['eslint'] = function()
+        --     lspconfig.eslint.setup({
+        --         capabilities = lsp_capabilities,
+        --         settings = {
+        --             codeActions = {
+        --                 force = false
+        --             },
+        --             force = false,
+        --             format = false,
+        --             quiet = true
+        --         }
+        --     })
+        -- end,
         ['gopls'] = function()
             lspconfig.gopls.setup({
                 capabilities = lsp_capabilities,
