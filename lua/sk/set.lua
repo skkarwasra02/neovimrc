@@ -33,3 +33,6 @@ vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "
 
 vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+
+-- Codeium idle delay
+vim.g.codeium_idle_delay = 1000

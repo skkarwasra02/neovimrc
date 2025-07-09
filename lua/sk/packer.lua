@@ -49,7 +49,12 @@ return require('packer').startup(function(use)
     use({ 'L3MON4D3/LuaSnip' })
     use({ 'rafamadriz/friendly-snippets' })
 
-    use({ 'Exafunction/codeium.vim' })
+    -- use({
+    --     'Exafunction/windsurf.vim',
+    --     config = function()
+    --         require('windsurf').setup()
+    --     end
+    -- })
 
     use({
         "folke/tokyonight.nvim",
@@ -58,7 +63,7 @@ return require('packer').startup(function(use)
         opts = {},
     })
 
-    use('jose-elias-alvarez/null-ls.nvim')
+    -- use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
 
     use({
@@ -71,7 +76,10 @@ return require('packer').startup(function(use)
 
     use({
         "folke/trouble.nvim",
-        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        opts = {
+            auto_open = false,
+            auto_preview = false
+        }, -- for default options, refer to the configuration section for custom setup.
         cmd = "Trouble",
         config = function()
             require("trouble").setup()
