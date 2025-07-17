@@ -48,22 +48,31 @@ require('mason-lspconfig').setup({
                     completions = {
                         completeFunctionCalls = true
                     }
-                }
+                },
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    client.handlers["textDocument/publishDiagnostics"] = function() end
+                    lsp_attach(client, bufnr)
+                end
             })
         end,
-        -- ['eslint'] = function()
-        --     lspconfig.eslint.setup({
-        --         capabilities = lsp_capabilities,
-        --         settings = {
-        --             codeActions = {
-        --                 force = false
-        --             },
-        --             force = false,
-        --             format = false,
-        --             quiet = true
-        --         }
-        --     })
-        -- end,
+        ['eslint'] = function()
+            lspconfig.eslint.setup({
+                capabilities = lsp_capabilities,
+                settings = {
+                    codeActions = {
+                        force = false
+                    },
+                    force = false,
+                    format = false,
+                    quiet = true
+                },
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    lsp_attach(client, bufnr)
+                end
+            })
+        end,
         ['gopls'] = function()
             lspconfig.gopls.setup({
                 capabilities = lsp_capabilities,
@@ -133,6 +142,7 @@ local async = event == "BufWritePost"
 null_ls.setup({
     sources = {
         -- null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.formatting.prettierd,
     },
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
