@@ -60,7 +60,7 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set(
@@ -78,3 +78,11 @@ end)
 
 -- nnoremap <Leader>b :ls<CR>:b<Space>
 vim.keymap.set("n", "<leader>b", ":ls<CR>:b<Space>")
+
+-- Go to next diagnostic
+vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next)
+-- Go to previous diagnostic
+vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev)
+
+-- LSP rename
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "LSP Rename" })
